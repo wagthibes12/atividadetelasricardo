@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard-usuario</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+  <!-- Barra Lateral Atualizada -->
+  <aside class="sidebar" aria-label="Menu Principal">
+    <nav class="sidebar-nav">
+      <ul class="sidebar-list">
+        <li class="sidebar-item"><a href="#" class="sidebar-link active">Dashboard</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-link">Nova solicitacoes</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-link">Perfil</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Área Principal -->
+  <main class="main-content">
+    <!-- Cabeçalho -->
+    <header class="content-header">
+      <div class="header-placeholder"></div> <!-- Espaçamento para alinhar -->
+      <div class="user-profile">
+        <span class="profile-label">Foto do perfil</span>
+        <div class="profile-avatar" aria-label="Avatar do usuário">👤</div>
+      </div>
+    </header>
+
+    <!-- Cards de Métricas Específicos desta tela -->
+    <section class="metrics-grid-alt" aria-label="Métricas do Sistema">
+      <div class="metric-card metric-card-highlight">
+        <h2 class="metric-title">Dashboard</h2>
+      </div>
+      
+      <div class="metric-card">
+        <span class="metric-label">Solicitações Pendentes</span>
+        <span class="metric-value">1</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-label">Empréstimos Anteriores</span>
+        <span class="metric-value">7</span>
+      </div>
+    </section>
+
+    <!-- Seção de Solicitações Anteriores -->
+    <section class="requests-section" aria-label="Solicitações Anteriores">
+      <h3 class="section-title">Solicitações Recentes</h3>
+      <div class="requests-content-area">
+        <p class="requests-text">Lista com as solicitações anteriores</p>
+        
+        <!-- Botão Ver Todas -->
+        <div class="requests-footer">
+          <button class="btn-ver-todas">Ver todas</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

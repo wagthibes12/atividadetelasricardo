@@ -9,6 +9,10 @@ html {
     font-family: Arial, Helvetica, sans-serif;
 
 }
+body{
+    max-width: 900;
+    padding: 1.5rem;
+}
 
 
 .login-page{
@@ -93,4 +97,444 @@ html {
 .btn-login:hover {
     background-color: #056cd3;
     color: #ffffff;
+}
+
+
+
+/* Definição de Variáveis de Design Tokens */
+:root {
+  --sidebar-width: 220px;
+  --bg-sidebar: #ffffff;
+  --border-color: #d1d5db;
+  --text-primary: #1f2937;
+  --hover-bg: #f3f4f6;
+  --active-bg: #111827;
+  --active-text: #ffffff;
+  --radius: 8px;
+}
+
+/* Reset básico e configurações globais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f9fafb;
+  color: var(--text-primary);
+}
+
+/* Layout Geral da Página (Sidebar + Conteúdo lado a lado) */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+/* Barra Lateral */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-nav {
+  width: 100%;
+}
+
+.sidebar-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: var(--hover-bg);
+  border-color: #9ca3af;
+}
+
+.sidebar-link.active {
+  background-color: var(--active-bg);
+  color: var(--active-text);
+  border-color: var(--active-bg);
+  font-weight: 600;
+}
+
+/* Área de Conteúdo Principal */
+.main-content {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cabeçalho do Conteúdo */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-label {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #dbeafe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border: 1px solid #bfdbfe;
+}
+
+/* Grid de Métricas */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 85px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.metric-card-highlight {
+  background-color: #1f2937;
+  border-color: #1f2937;
+  color: #ffffff;
+}
+
+.metric-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Seção de Solicitações Recentes */
+.requests-section {
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.requests-box {
+  padding: 32px;
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Definição de Variáveis de Design Tokens */
+:root {
+  --sidebar-width: 220px;
+  --bg-sidebar: #ffffff;
+  --border-color: #d1d5db;
+  --text-primary: #1f2937;
+  --hover-bg: #f3f4f6;
+  --active-bg: #111827;
+  --active-text: #ffffff;
+  --radius: 8px;
+}
+
+/* Reset básico e configurações globais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f9fafb;
+  color: var(--text-primary);
+}
+
+/* Layout Geral da Página (Sidebar + Conteúdo lado a lado) */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+/* Barra Lateral */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-nav {
+  width: 100%;
+}
+
+.sidebar-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background-color: var(--hover-bg);
+  border-color: #9ca3af;
+}
+
+.sidebar-link.active {
+  background-color: var(--active-bg);
+  color: var(--active-text);
+  border-color: var(--active-bg);
+  font-weight: 600;
+}
+
+/* Área de Conteúdo Principal */
+.main-content {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cabeçalho do Conteúdo */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-label {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #dbeafe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border: 1px solid #bfdbfe;
+}
+
+/* Grid de Métricas Específico (3 colunas para esta tela) */
+.metrics-grid-alt {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 220px));
+  gap: 16px;
+  justify-content: start;
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 85px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.metric-card-highlight {
+  background-color: #1f2937;
+  border-color: #1f2937;
+  color: #ffffff;
+}
+
+.metric-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Seção de Solicitações Anteriores */
+.requests-section {
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.requests-content-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  min-height: 250px;
+}
+
+.requests-text {
+  text-align: center;
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+.requests-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-ver-todas {
+  padding: 8px 16px;
+  background-color: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-ver-todas:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .metrics-grid-alt {
+    grid-template-columns: 1fr;
+  }
 }
