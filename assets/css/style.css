@@ -101,7 +101,7 @@ body{
 
 
 
-/* Definição de Variáveis de Design Tokens */
+
 :root {
   --sidebar-width: 220px;
   --bg-sidebar: #ffffff;
@@ -113,7 +113,7 @@ body{
   --radius: 8px;
 }
 
-/* Reset básico e configurações globais */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -126,14 +126,14 @@ body {
   color: var(--text-primary);
 }
 
-/* Layout Geral da Página (Sidebar + Conteúdo lado a lado) */
+
 .dashboard-layout {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
   min-height: 100vh;
 }
 
-/* Barra Lateral */
+
 .sidebar {
   width: var(--sidebar-width);
   height: 100vh;
@@ -184,7 +184,7 @@ body {
   font-weight: 600;
 }
 
-/* Área de Conteúdo Principal */
+
 .main-content {
   padding: 28px 32px;
   display: flex;
@@ -192,7 +192,7 @@ body {
   gap: 24px;
 }
 
-/* Cabeçalho do Conteúdo */
+
 .content-header {
   display: flex;
   justify-content: space-between;
@@ -228,7 +228,7 @@ body {
   border: 1px solid #bfdbfe;
 }
 
-/* Grid de Métricas */
+
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -275,7 +275,7 @@ body {
   color: #ffffff;
 }
 
-/* Seção de Solicitações Recentes */
+
 .requests-section {
   background-color: #ffffff;
   border: 1.5px solid var(--border-color);
@@ -300,14 +300,14 @@ body {
   font-size: 14px;
 }
 
-/* Responsividade para telas menores */
+
 @media (max-width: 1024px) {
   .metrics-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Definição de Variáveis de Design Tokens */
+
 :root {
   --sidebar-width: 220px;
   --bg-sidebar: #ffffff;
@@ -319,7 +319,7 @@ body {
   --radius: 8px;
 }
 
-/* Reset básico e configurações globais */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -332,14 +332,14 @@ body {
   color: var(--text-primary);
 }
 
-/* Layout Geral da Página (Sidebar + Conteúdo lado a lado) */
+
 .dashboard-layout {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr;
   min-height: 100vh;
 }
 
-/* Barra Lateral */
+
 .sidebar {
   width: var(--sidebar-width);
   height: 100vh;
@@ -390,7 +390,7 @@ body {
   font-weight: 600;
 }
 
-/* Área de Conteúdo Principal */
+
 .main-content {
   padding: 28px 32px;
   display: flex;
@@ -398,7 +398,7 @@ body {
   gap: 24px;
 }
 
-/* Cabeçalho do Conteúdo */
+
 .content-header {
   display: flex;
   justify-content: space-between;
@@ -429,7 +429,7 @@ body {
   border: 1px solid #bfdbfe;
 }
 
-/* Grid de Métricas Específico (3 colunas para esta tela) */
+
 .metrics-grid-alt {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 220px));
@@ -477,7 +477,7 @@ body {
   color: #ffffff;
 }
 
-/* Seção de Solicitações Anteriores */
+
 .requests-section {
   background-color: #ffffff;
   border: 1.5px solid var(--border-color);
@@ -532,7 +532,7 @@ body {
   background-color: var(--hover-bg);
 }
 
-/* Responsividade para telas menores */
+
 @media (max-width: 768px) {
   .metrics-grid-alt {
     grid-template-columns: 1fr;
