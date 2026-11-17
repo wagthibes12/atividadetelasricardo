@@ -24,8 +24,27 @@
                 <input id="senha" type="password" name="senha" required>
             </div>
             
-            <button class="btn-login" type="submit">Entrar</button>
+            <button id= "btnLogin" class ="btn-login" type="submit">Entrar</button>
         </form>
     </main>
+    <script>
+        const btnLogin =document.getElementById("btnLogin"); 
+        btnLogin.addEventListener ('click', (ev) => {
+            ev.preventDefault();
+            console.log (btnLogin);
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            
+            fetch('http://127.0.0.1:8000/auth/login',{
+                headers:{},
+                method:"post",
+                body:{}
+            }).then().
+            console.log(email)
+            console.log(senha)
+        })
+
+
+    </script>
 </body>
 </html>
