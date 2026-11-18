@@ -1,50 +1,193 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Login - Instituto Inova</title>
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body class="login-page">
+
     <main class="login-card">
+
         <header class="login-header">
-            <h1>Bem-vindo(a) Instituto Inova</h1>
-            <p>Acesse Sua Conta</p>
+            <h1>Instituto Inova</h1>
+            <p>Sistema de Empréstimos de Equipamentos</p>
+            <p>Acesse sua conta</p>
         </header>
 
-        <form class="login-form">
+        <form class="login-form" id="formLogin">
+
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input id="email" type="email" name="email" required>
+
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
             </div>
 
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input id="senha" type="password" name="senha" required>
-            </div>
-            
-            <button id= "btnLogin" class ="btn-login" type="submit">Entrar</button>
-        </form>
-    </main>
-    <script>
-        const btnLogin =document.getElementById("btnLogin"); 
-        btnLogin.addEventListener ('click', (ev) => {
-            ev.preventDefault();
-            console.log (btnLogin);
-            const email = document.getElementById("email").value;
-            const senha = document.getElementById("senha").value;
-            
-            fetch('http://127.0.0.1:8000/auth/login',{
-                headers:{},
-                method:"post",
-                body:{}
-            }).then().
-            console.log(email)
-            console.log(senha)
-        })
 
+                <input
+                    id="senha"
+                    type="password"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+            </div>
+
+            <button
+                id="btnLogin"
+                class="btn-login"
+                type="submit"
+            >
+                Entrar
+            </button>
+
+            <p
+                id="mensagem"
+                role="alert"
+                style="margin-top: 10px;"
+            ></p>
+
+        </form>
+
+    </main>
+
+    <script>
+
+        const formLogin = document.getElementById("formLogin");
+        const btnLogin = document.getElementById("btnLogin");
+        const mensagem = document.getElementById("mensagem");
+
+        const API_URL = "http://127.0.0.1:8000";
+
+        // Decodifica as informações contidas no JWT.
+        function decodificarToken(token) {
+
+            const partes = token.split(".");
+
+            if (partes.length !== 3) {
+                throw new Error("Token inválido.");
+            }
+
+            let base64 = partes[1]
+                .replace(/-/g, "+")
+                .replace(/_/g, "/");
+
+            base64 += "=".repeat((4 - base64.length % 4) % 4);
+
+            const bytes = Uint8Array.from(
+                atob(base64),
+                caractere => caractere.charCodeAt(0)
+            );
+
+            return JSON.parse(
+                new TextDecoder().decode(bytes)
+            );
+        }
+
+        // Executa o login ao enviar o formulário.
+        formLogin.addEventListener("submit", async (ev) => {
+
+            ev.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const senha = document.getElementById("senha").value;
+
+            btnLogin.disabled = true;
+            btnLogin.textContent = "Entrando...";
+
+            mensagem.textContent = "";
+            mensagem.style.color = "red";
+
+            try {
+
+                const resposta = await fetch(`${API_URL}/auth/login`, {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email,
+                        senha: senha
+                    })
+
+                });
+
+                const dados = await resposta.json();
+
+                if (!resposta.ok) {
+                    throw new Error(
+                        dados.detail || "E-mail ou senha inválidos."
+                    );
+                }
+
+                // Recupera o token recebido da API.
+                const token = dados.access_token;
+
+                if (!token) {
+                    throw new Error("A API não retornou o token.");
+                }
+
+                // Identifica o perfil dentro do JWT.
+                const informacoes = decodificarToken(token);
+
+                const perfil = informacoes.role;
+
+                // Define o dashboard conforme o perfil.
+                const destinos = {
+                    "ADMIN": "dashboard-admin.html",
+                    "GESTOR": "dashboard-gestor.html",
+                    "DISCENTE": "dashboard-usuario.html"
+                };
+
+                const destino = destinos[perfil];
+
+                if (!destino) {
+                    throw new Error("Perfil de usuário não reconhecido.");
+                }
+
+                // Salva o token e as informações básicas.
+                localStorage.setItem("token", token);
+                localStorage.setItem("perfil", perfil);
+
+                mensagem.style.color = "green";
+                mensagem.textContent = "Login realizado com sucesso!";
+
+                // Encaminha o usuário para seu dashboard.
+                window.location.href = destino;
+
+            } catch (erro) {
+
+                console.error("Erro no login:", erro);
+
+                mensagem.textContent = erro.message;
+
+            } finally {
+
+                btnLogin.disabled = false;
+                btnLogin.textContent = "Entrar";
+
+            }
+
+        });
 
     </script>
+
 </body>
 </html>
